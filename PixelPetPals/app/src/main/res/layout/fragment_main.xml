@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cocoaandcoffee.pixelpetpals.MainActivity$PlaceholderFragment"
+    android:backgroundTint="@color/colorPrimary"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/pingurin1"
+        android:paddingTop="0dp"
+        android:scaleType="fitCenter"
+        android:background="#FFFFFF" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/imageView2"
+            android:src="@mipmap/hungrybar"
+            android:scaleType="centerCrop"
+            android:paddingTop="10dp"
+            android:padding="10dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/imageView3"
+            android:src="@mipmap/happybar"
+            android:scaleType="centerCrop"
+            android:paddingTop="10dp"
+            android:padding="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:id="@+id/imageView4"
+            android:src="@mipmap/expbar"
+            android:scaleType="centerCrop"
+            android:paddingTop="10dp"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/imageView5"
+                android:src="@mipmap/coin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6"
+                android:id="@+id/textView"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="bottom|center_horizontal" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pingu"
+            android:id="@+id/textName"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lvl- 42"
+            android:id="@+id/textView2"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignWithParentIfMissing="false"
+        android:gravity="top|center"
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="List 1"
+            android:id="@+id/button2"
+            android:background="@color/colorPrimaryLight"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="2.5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="List 2"
+            android:id="@+id/button3"
+            android:textColor="#FFFFFF"
+            android:allowUndo="true"
+            android:background="@color/colorPrimaryLight"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="22.5dp" />
+    </LinearLayout>
+</RelativeLayout>
