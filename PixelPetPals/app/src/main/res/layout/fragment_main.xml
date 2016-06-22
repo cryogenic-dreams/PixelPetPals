@@ -26,7 +26,8 @@
         android:layout_toRightOf="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
         android:layout_alignBottom="@+id/imageView"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:background="@color/colorPrimaryLight">
 
         <ImageView
             android:layout_width="match_parent"
@@ -58,37 +59,49 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/imageView5"
                 android:src="@mipmap/coin"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="6"
                 android:id="@+id/textView"
                 android:textColor="#FFFFFF"
-                android:layout_gravity="bottom|center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.10"
+                android:gravity="center|fill" />
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pingu"
-            android:id="@+id/textName"
-            android:textColor="#FFFFFF"/>
+            android:layout_gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lvl- 42"
-            android:id="@+id/textView2"
-            android:textColor="#FFFFFF"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pingu"
+                android:id="@+id/textName"
+                android:textColor="#FFFFFF"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lvl- 42"
+                android:id="@+id/textView2"
+                android:textColor="#FFFFFF"
+                android:padding="5dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -97,30 +110,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignWithParentIfMissing="false"
-        android:gravity="top|center"
         android:layout_below="@+id/imageView"
         android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout">
+        android:layout_alignEnd="@+id/linearLayout"
+        android:background="@color/colorPrimaryLight">
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="List 1"
             android:id="@+id/button2"
-            android:background="@color/colorPrimaryLight"
-            android:textColor="#FFFFFF"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimary"
             android:layout_marginTop="2.5dp"
-            android:layout_marginBottom="2.5dp" />
+            android:layout_marginBottom="2.5dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="List 2"
             android:id="@+id/button3"
-            android:textColor="#FFFFFF"
             android:allowUndo="true"
-            android:background="@color/colorPrimaryLight"
+            android:background="#FFFFFF"
             android:layout_marginTop="2.5dp"
-            android:layout_marginBottom="22.5dp" />
+            android:layout_marginBottom="22.5dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp" />
     </LinearLayout>
 </RelativeLayout>
