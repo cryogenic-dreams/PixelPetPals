@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private final static int[][] drawables = new int[30][2];
     private ViewPager mViewPager;
+    private int numberLists;
+    private String name;
+    private static ArrayList<String> names;
+
+    private final int ACTIVITY_IDENTIFIER = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        this.numberLists = 3; //This will chage to a number saved in savedInstance
+        names = new ArrayList<>();
+        names.add(0,"");
+        names.add(1,"");
+        //We are using the var ARG_SECTION_NUMBER so no 0 and 1 is reserved for the main page
+        names.add(2, "List 1"); //Still hardcoded to see how it works
+        names.add(3, "List 2");
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -55,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout2);
                 Intent intent = new Intent();
-               // intent.putExtra("LinearLayout2",  v);
                 intent.setClass(getBaseContext(), ListCreationActivity.class);
-                startActivityForResult(intent,10);
+                startActivityForResult(intent, ACTIVITY_IDENTIFIER);
             }
         });
 
@@ -75,10 +87,13 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch(requestCode) {
-            case (10) : {
+            case (ACTIVITY_IDENTIFIER) : {
                 if (resultCode == Activity.RESULT_OK) {
-                    String name = data.getStringExtra("name");
+                    name = data.getStringExtra("name");
                     createButton(name);
+                    numberLists++;
+                    names.add(numberLists, name);
+                    mSectionsPagerAdapter.notifyDataSetChanged();
                 }
                 break;
             }
@@ -129,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             final View rootView;
 
+            //Save this in database jeez
             drawables[0][0] = R.drawable.pingurin1;
             drawables[0][1] = R.drawable.pingurin1_1;
 
@@ -179,9 +195,10 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
+                //This bulk is just to see how it works and looks
                 rootView = inflater.inflate(R.layout.fragment_main, container, false);
                 final ImageView iv = (ImageView) rootView.findViewById(R.id.imageView);
-                iv.setPadding(0, 360, 0, 0);
+                iv.setPadding(0, 390, 0, 0);
 
                 switchImages(iv, drawables[count][0], drawables[count][1]);
                 count++;
@@ -192,22 +209,22 @@ public class MainActivity extends AppCompatActivity {
                         float density = rootView.getContext().getResources().getDisplayMetrics().density;
                         if (count % 4 == 0) {
                             timer.cancel();
-                            paddingPixel = 120;
+                            paddingPixel = 130;
                             switchImages(iv, drawables[count%16][0], drawables[count%16][1]);
                             count++;
                         } else if (count % 4 == 1) {
                             timer.cancel();
-                            paddingPixel = 95;
+                            paddingPixel = 105;
                             switchImages(iv, drawables[count%16][0], drawables[count%16][1]);
                             count++;
                         } else if (count % 4 == 2) {
                             timer.cancel();
-                            paddingPixel = 60;
+                            paddingPixel = 80;
                             switchImages(iv, drawables[count%16][0], drawables[count%16][1]);
                             count++;
                         } else if (count % 4 == 3) {
                             timer.cancel();
-                            paddingPixel = 10;
+                            paddingPixel = 30;
                             switchImages(iv, drawables[count%16][0], drawables[count%16][1]);
                             count ++;
                         }
@@ -222,6 +239,8 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 rootView = inflater.inflate(R.layout.fragment_board, container, false);
+                TextView textView = (TextView) rootView.findViewById(R.id.list_label);
+                textView.setText(names.get(getArguments().getInt(ARG_SECTION_NUMBER)));
             }
 
             return rootView;
@@ -266,18 +285,18 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return numberLists;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "LIST 1";
                 case 1:
-                    return "SECTION 2";
+                    return "LIST 2";
                 case 2:
-                    return "SECTION 3";
+                    return name;
             }
             return null;
         }
