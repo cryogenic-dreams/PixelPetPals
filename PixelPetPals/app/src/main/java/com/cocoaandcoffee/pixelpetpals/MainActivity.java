@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        //Alert this button action crashes when in page_section>2
+        //Override onPause() and/or onDestroy()
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createButton (String name){
+        //Note to self: this needs a list factory
+        //Also make a template
         LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout2);
         Button myButton = new Button(this);
         myButton.setText(name);
